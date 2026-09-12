@@ -94,6 +94,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
 /* guide */
 .guide{display:grid;gap:40px;align-items:start}
 @media(min-width:900px){.guide{grid-template-columns:1fr 1fr;gap:64px}}
+.team{display:grid;gap:20px;margin-top:44px;grid-template-columns:1fr}
+@media(min-width:620px){.team{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
+.member{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px}
+.member h3{margin-top:16px}
+.member p{font-size:.95rem;margin-top:8px}
+.member .role{margin-top:3px;font-size:.83rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--red)}
+.av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.15rem;letter-spacing:.02em;color:#fff}
+.av-red{background:var(--red)}
+.av-blue{background:var(--blue)}
 .creds{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
 .creds li{display:flex;gap:13px;align-items:flex-start;font-size:.98rem}
 .creds b{color:var(--ink)}
@@ -166,7 +178,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
       <a href="#coverage">What we cover</a>
       <a href="#about">About Greg</a>
     </nav>
-    <a class="btn btn-primary" href="#quote">Get a Quote</a>
+    <a class="btn btn-primary" href="https://gregstrauch.github.io/strauch-agency-tools/personal-quote/">Get a Quote</a>
   </div>
 </header>
 
@@ -178,7 +190,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
       <h1 style="margin-top:14px">Know exactly what you're covered for — <em>before</em> you need it.</h1>
       <p class="lede">Most families are one claim away from finding out their policy wasn't what they thought. We'll walk through your auto, home and life coverage in plain English, show you the gaps, and quote it honestly. Takes about ten minutes.</p>
       <div class="btns">
-        <a class="btn btn-primary" href="#quote">Get My Free Quote</a>
+        <a class="btn btn-primary" href="https://gregstrauch.github.io/strauch-agency-tools/personal-quote/">Get My Free Quote</a>
         <a class="btn btn-ghost" href="tel:+17196283948">Call (719) 628-3948</a>
       </div>
       <div class="trust">
@@ -229,24 +241,48 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
   </div>
 </section>
 
-<!-- GUIDE -->
+<!-- GUIDE / TEAM -->
 <section class="alt" id="about">
-  <div class="wrap guide">
-    <div>
-      <p class="eyebrow">Who you're working with</p>
-      <h2 style="margin-top:12px">I'd rather you understand it than just buy it.</h2>
-      <p class="lede" style="margin-top:18px">I'm Greg Strauch. I live here, I've built and run businesses here, and I've spent seventeen years in the Air Force Reserve where getting the details wrong has consequences. That's the same standard I hold for your coverage.</p>
-      <p class="lede" style="margin-top:16px">You'll get a straight answer about what you actually need — including when the answer is "you're fine, don't buy that."</p>
-      <div class="btns"><a class="btn btn-primary" href="#quote">Get My Free Quote</a></div>
+  <div class="wrap">
+    <p class="eyebrow">Who you're working with</p>
+    <h2 style="margin-top:12px;max-width:20ch">The people you'll actually talk to.</h2>
+    <p class="lede" style="margin-top:18px">No call center, no rotating queue, no "please hold for the next available representative." This is the whole team, here in Colorado Springs, every one of them licensed. When you call, one of these five picks up &mdash; and they'll tell you straight what you need, including when the answer is "you're fine, don't buy that."</p>
+
+    <div class="team">
+      <div class="member">
+        <div class="av av-red">G</div>
+        <h3>Greg Strauch</h3>
+        <p class="role">Agency Owner</p>
+        <p>Colorado Springs local, 17+ years in the Air Force Reserve, and he built and sold a business before this one. He reads the policy so you don't have to.</p>
+      </div>
+      <div class="member">
+        <div class="av av-blue">F</div>
+        <h3>Faith</h3>
+        <p class="role">Producer</p>
+        <p>Quotes auto, home and life, and walks you through what each limit actually means before you pick one.</p>
+      </div>
+      <div class="member">
+        <div class="av av-blue">K</div>
+        <h3>Kacey</h3>
+        <p class="role">Producer</p>
+        <p>Handles new quotes and coverage reviews &mdash; and will say so when a cheaper policy is the worse deal.</p>
+      </div>
+      <div class="member">
+        <div class="av av-blue">L</div>
+        <h3>Lizbet</h3>
+        <p class="role">Producer</p>
+        <p>Quotes and reviews coverage for households and small businesses across Colorado Springs.</p>
+      </div>
+      <div class="member">
+        <div class="av av-blue">K</div>
+        <h3>Kara</h3>
+        <p class="role">Producer</p>
+        <p>Works your quote start to finish &mdash; the questions, the options, and the follow-up after you're covered.</p>
+      </div>
     </div>
-    <div>
-      <ul class="creds">
-        <li><span class="n">1</span><div><b>Local Farmers agency owner</b><br>Colorado Springs. You get me and my team, not a 1-800 number.</div></li>
-        <li><span class="n">2</span><div><b>17+ years, Air Force Reserve</b><br>Senior Master Sergeant and Flight Chief at Peterson SFB. Details matter; people matter more.</div></li>
-        <li><span class="n">3</span><div><b>Business owner and mentor</b><br>Built and sold a 175-member gym, then mentored 90+ other owners. I know what a bad month feels like.</div></li>
-        <li><span class="n">4</span><div><b>Full household coverage</b><br>Auto, home, renters, life, umbrella and business — reviewed together, so the gaps show up.</div></li>
-      </ul>
-    </div>
+
+    <div class="btns"><a class="btn btn-primary" href="https://gregstrauch.github.io/strauch-agency-tools/personal-quote/">Get My Free Quote</a>
+      <a class="btn btn-ghost" href="tel:+17196283948">Call (719) 628-3948</a></div>
   </div>
 </section>
 
