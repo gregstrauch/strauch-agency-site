@@ -90,15 +90,19 @@ section{padding:clamp(56px,8vw,96px) 0}
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
-  max-width:var(--wrap);margin:0 auto}
+  max-width:var(--wrap);margin:0 auto;flex-wrap:wrap}
 .logo{display:flex;flex-direction:column;text-decoration:none;line-height:1.2}
 .logo b{color:var(--ink);font-size:1.06rem;font-weight:800;letter-spacing:-.01em}
 .logo span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
 .bar .btn{padding:11px 20px;font-size:.92rem}
-.bar nav{display:none;gap:26px}
+.bar nav{display:flex;gap:20px;order:3;width:100%;margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--line);overflow-x:auto;white-space:nowrap;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.bar nav::-webkit-scrollbar{display:none}
 .bar nav a{color:var(--body);text-decoration:none;font-weight:600;font-size:.95rem}
 .bar nav a:hover{color:var(--blue)}
-@media(min-width:900px){.bar nav{display:flex}}
+@media(min-width:900px){.bar nav{order:0;width:auto;gap:26px;margin-top:0;padding-top:0;
+  border-top:0;overflow:visible}}
 
 /* hero */
 .hero{background:linear-gradient(170deg,#fff 0%,var(--bg-alt) 60%,var(--blue-pale) 100%);
