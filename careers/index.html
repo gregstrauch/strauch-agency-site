@@ -37,11 +37,20 @@ section{padding:clamp(52px,7vw,88px) 0}
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;
-  max-width:var(--wrap);margin:0 auto}
+  max-width:var(--wrap);margin:0 auto;flex-wrap:wrap}
 .logo{display:flex;flex-direction:column;text-decoration:none;line-height:1.2}
 .logo b{color:var(--ink);font-size:1.06rem;font-weight:800;letter-spacing:-.01em}
 .logo span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
-.back{color:var(--blue);text-decoration:none;font-weight:700;font-size:.93rem}
+.bar .btn{padding:11px 20px;font-size:.92rem}
+.bar nav{display:flex;gap:20px;order:3;width:100%;margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--line);overflow-x:auto;white-space:nowrap;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.bar nav::-webkit-scrollbar{display:none}
+.bar nav a{color:var(--body);text-decoration:none;font-weight:600;font-size:.95rem}
+.bar nav a:hover{color:var(--blue)}
+.bar nav a[aria-current="page"]{color:var(--red)}
+@media(min-width:900px){.bar nav{order:0;width:auto;gap:26px;margin-top:0;padding-top:0;
+  border-top:0;overflow:visible}}
 .hero{background:linear-gradient(170deg,#fff 0%,var(--bg-alt) 60%,var(--blue-pale) 100%);
   border-bottom:1px solid var(--line)}
 .btn{display:inline-block;padding:16px 30px;border-radius:8px;font-weight:700;font-size:1.02rem;
@@ -105,7 +114,14 @@ footer a:hover{text-decoration:underline}
 
 <header><div class="bar">
   <a class="logo" href="https://strauchagency.com/"><b>The Strauch Agency</b><span>Farmers Insurance</span></a>
-  <a class="back" href="https://strauchagency.com/">&larr; Back to site</a>
+  <nav>
+    <a href="https://strauchagency.com/#problem">Why it matters</a>
+    <a href="https://strauchagency.com/#how">How it works</a>
+    <a href="https://strauchagency.com/#coverage">What we cover</a>
+    <a href="https://strauchagency.com/#about">Meet the Team</a>
+    <a href="./" aria-current="page">Careers</a>
+  </nav>
+  <a class="btn btn-primary" href="https://gregstrauch.github.io/strauch-agency-tools/personal-quote/">Get a Quote</a>
 </div></header>
 
 <section class="hero">
