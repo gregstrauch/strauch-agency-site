@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gregstrauch.github.io/strauch-agency-site/sitemap.xml
+Sitemap: https://strauchagency.com/sitemap.xml
