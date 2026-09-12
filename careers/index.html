@@ -58,6 +58,11 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
 .role ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:9px;font-size:.93rem}
 .role li{display:flex;gap:10px;align-items:flex-start}
 .role li::before{content:"";flex:0 0 7px;height:7px;margin-top:8px;border-radius:99px;background:var(--red)}
+.paynote{margin-top:40px;background:var(--bg-alt);border:1px solid var(--line);
+  border-left:5px solid var(--red);border-radius:0 12px 12px 0;padding:28px 30px}
+.paynote h3{margin-bottom:12px}
+.paynote p{margin-top:10px;font-size:.96rem}
+.paynote .small{font-size:.83rem;color:#767e9c;margin-top:16px}
 .why{display:grid;gap:20px;margin-top:40px;grid-template-columns:1fr}
 @media(min-width:760px){.why{grid-template-columns:repeat(2,1fr)}}
 .why div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px}
@@ -122,7 +127,7 @@ footer a:hover{text-decoration:underline}
         <h3>Producer</h3>
         <p>The sales seat. You quote auto, home, life and business, follow up relentlessly, and build a book of households that stay.</p>
         <ul>
-          <li>Base plus commission, no cap</li>
+          <li><b>$33,600 base + uncapped commission</b><br>$45,000&ndash;$80,000 expected total earnings</li>
           <li>We pay for your licensing and training</li>
           <li>Three-day onboarding, then ongoing coaching</li>
           <li>Leads provided &mdash; you're not cold-starting</li>
@@ -150,6 +155,14 @@ footer a:hover{text-decoration:underline}
           <li>Military spouses and veterans encouraged</li>
         </ul>
       </div>
+    </div>
+
+    <div class="paynote">
+      <h3>Pay &amp; benefits</h3>
+      <p><b>Producer:</b> $33,600/year base ($2,800/month) plus uncapped commission paid at 3&ndash;8% of new-business premium, rising with your monthly volume. Expected total earnings $45,000&ndash;$80,000/year depending on production; top tier has no cap.</p>
+      <p><b>Client Service Representative:</b> salary plus performance bonus, set by experience and licensing at time of offer.</p>
+      <p><b>Benefits:</b> we pay for your insurance licensing and all training, plus paid time off.</p>
+      <p class="small">Posted under the Colorado Equal Pay for Equal Work Act. Ranges are good-faith estimates as of September 2026; actual earnings depend on production and are not a guarantee of income.</p>
     </div>
   </div>
 </section>
