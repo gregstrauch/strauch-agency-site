@@ -76,6 +76,8 @@ a{color:var(--blue)}
 section{padding:clamp(56px,8vw,96px) 0}
 .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
 .lede{font-size:clamp(1.05rem,2vw,1.22rem);max-width:60ch}
+.eyebrow+h2{margin-top:12px}
+h2+.lede{margin-top:18px}
 
 /* buttons */
 .btn{display:inline-block;padding:16px 30px;border-radius:8px;font-weight:700;font-size:1.02rem;
@@ -257,8 +259,8 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 <section id="problem">
   <div class="wrap">
     <p class="eyebrow">The real problem</p>
-    <h2 style="margin-top:12px;max-width:22ch">Nobody reads their policy. Then something happens.</h2>
-    <p class="lede" style="margin-top:18px">Insurance gets sold in ninety seconds by whoever was cheapest that week. It doesn't get explained. So people carry state-minimum limits, a deductible they can't cover, or no umbrella at all — and never know until the day it counts.</p>
+    <h2 style="max-width:22ch">Nobody reads their policy. Then something happens.</h2>
+    <p class="lede">Insurance gets sold in ninety seconds by whoever was cheapest that week. It doesn't get explained. So people carry state-minimum limits, a deductible they can't cover, or no umbrella at all — and never know until the day it counts.</p>
     <div class="grid g3">
       <div class="card">
         <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
@@ -283,8 +285,8 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 <section class="alt" id="about">
   <div class="wrap">
     <p class="eyebrow">Who you're working with</p>
-    <h2 style="margin-top:12px;max-width:20ch">The people you'll actually talk to.</h2>
-    <p class="lede" style="margin-top:18px">No call center, no rotating queue, no "please hold for the next available representative." This is the whole team, here in Colorado Springs, every one of them licensed. When you call, one of these five picks up &mdash; and they'll tell you straight what you need, including when the answer is "you're fine, don't buy that."</p>
+    <h2 style="max-width:20ch">The people you'll actually talk to.</h2>
+    <p class="lede">No call center, no rotating queue, no "please hold for the next available representative." This is the whole team, here in Colorado Springs, every one of them licensed. When you call, one of these five picks up &mdash; and they'll tell you straight what you need, including when the answer is "you're fine, don't buy that."</p>
 
     <div class="team">
       <div class="member">
@@ -328,7 +330,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 <section id="how">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
-    <h2 style="margin-top:12px">Three steps. About ten minutes of your time.</h2>
+    <h2>Three steps. About ten minutes of your time.</h2>
     <div class="steps">
       <div class="step">
         <h3>You tell us what you have</h3>
@@ -345,8 +347,8 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
     </div>
 
     <p class="eyebrow" style="margin-top:64px">Straight talk first</p>
-    <h2 style="margin-top:12px;max-width:24ch">Reasons we might not be your agency.</h2>
-    <p class="lede" style="margin-top:18px">Better you hear this now than after a phone call.</p>
+    <h2 style="max-width:24ch">Reasons we might not be your agency.</h2>
+    <p class="lede">Better you hear this now than after a phone call.</p>
     <div class="grid g3">
       <div class="card">
         <h3>We're often not the cheapest</h3>
@@ -368,8 +370,8 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 <section class="alt" id="coverage">
   <div class="wrap">
     <p class="eyebrow">What we cover</p>
-    <h2 style="margin-top:12px">Everything under one roof.</h2>
-    <p class="lede" style="margin-top:18px">Bundling isn't just a discount — it's the only way anyone sees your whole picture at once.</p>
+    <h2>Everything under one roof.</h2>
+    <p class="lede">Bundling isn't just a discount — it's the only way anyone sees your whole picture at once.</p>
     <div class="cov">
       <div>Auto<span>Cars, trucks, motorcycles, RVs</span></div>
       <div>Home<span>Homeowners &amp; condo</span></div>
@@ -385,7 +387,7 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 <section>
   <div class="wrap">
     <p class="eyebrow">What's at stake</p>
-    <h2 style="margin-top:12px">The difference shows up on one day.</h2>
+    <h2>The difference shows up on one day.</h2>
     <div class="stakes">
       <div class="bad">
         <h3>Without a real review</h3>
@@ -464,11 +466,10 @@ footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
       The Strauch Agency is an authorized agency of Farmers Insurance Group. Colorado producer license #963971.
       Coverage and discounts are subject to underwriting review, policy terms and state availability; this page is
       for general information and is not a contract, an offer of coverage, or a guarantee of rate.
-      &copy; <span id="yr">2026</span> The Strauch Agency. All rights reserved.
+      &copy; 2026 The Strauch Agency. All rights reserved.
     </p>
   </div>
 </footer>
-<script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "850ed6eb0221427bbe607fc3ad61f4a2"}'></script>
 </body>
 </html>

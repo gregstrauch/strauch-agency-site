@@ -304,7 +304,6 @@ footer a:hover{text-decoration:underline}
 <script>
 const ENDPOINT   = "https://script.google.com/macros/s/AKfycby7wLgf4ALZZOz1QB-df4LW00Y3hsRquJ4hQMyzJ3zQ64AGj7n5NKSOeZeSZDHPB4bP/exec";
 const INGEST_KEY = "strauch-careers-2026";
-const MAX_MB     = 5;
 
 const form = document.getElementById("form");
 const msg  = document.getElementById("msg");
@@ -328,10 +327,9 @@ form.addEventListener("submit", async ev => {
     if (bad) { bad.focus(); bad.scrollIntoView({block:"center", behavior:"smooth"}); }
     return fail("Please finish the required fields above.");
   }
-  if (ENDPOINT.startsWith("REPLACE")) return fail("This form isn't connected yet. Please call (719) 628-3948.");
 
   const file = document.getElementById("resume").files[0];
-  if (file && file.size > MAX_MB * 1024 * 1024) return fail("That resume is over " + MAX_MB + " MB. Please upload a smaller file.");
+  if (file && file.size > 5 * 1024 * 1024) return fail("That resume is over 5 MB. Please upload a smaller file.");
 
   btn.disabled = true; btn.textContent = "Sending…";
   try {
