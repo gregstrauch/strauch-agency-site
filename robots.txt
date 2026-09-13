@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /sales-system/
+Disallow: /board/
+Disallow: /lead-tracker/
 
 Sitemap: https://strauchagency.com/sitemap.xml
