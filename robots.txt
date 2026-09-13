@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /sales-system/
 
 Sitemap: https://strauchagency.com/sitemap.xml
