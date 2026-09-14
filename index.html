@@ -95,7 +95,7 @@
  ]
 }
 </script>
-<link rel="stylesheet" href="/site.css?v=20260914b">
+<link rel="stylesheet" href="/site.css?v=20260914c">
 </head>
 <body>
 
@@ -303,15 +303,54 @@
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final">
-  <div class="wrap">
-    <p class="eyebrow">Ready when you are</p>
-    <h2>Let's find out what you're actually covered for.</h2>
-    <p class="lede">Free, no obligation, and you'll hear back the same business day.</p>
-    <div class="btns">
-      <a class="btn btn-primary" href="https://strauchagency.com/personal-quote/">Get My Free Quote</a>
-      <a class="btn btn-ghost" href="tel:+17196283948">Call (719) 628-3948</a>
+<!-- CONTACT + SMS CONSENT -->
+<section class="final" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="eyebrow">Ready when you are</p>
+      <h2>Let's find out what you're actually covered for.</h2>
+      <p class="lede">Leave your name and number and one of us calls you back the same business day. Free, no obligation, no call center.</p>
+      <div class="btns" style="justify-content:flex-start">
+        <a class="btn btn-ghost" href="tel:+17196283948">Or call (719) 628-3948</a>
+      </div>
+      <p class="fineprint" style="text-align:left">Prefer to do it all online? <a href="https://strauchagency.com/personal-quote/">Personal quote form</a> &middot; <a href="https://strauchagency.com/business-quote/">Business quote form</a></p>
+    </div>
+    <form class="cform" id="cform" novalidate>
+      <div class="row2">
+        <label>First name<input type="text" name="firstName" id="c_first" required autocomplete="given-name"></label>
+        <label>Last name<input type="text" name="lastName" id="c_last" required autocomplete="family-name"></label>
+      </div>
+      <div class="row2">
+        <label>Email<input type="email" name="email" id="c_email" required autocomplete="email"></label>
+        <label>Phone<input type="tel" name="phone" id="c_phone" required autocomplete="tel"></label>
+      </div>
+      <fieldset>
+        <legend>I'm interested in</legend>
+        <div class="chips">
+          <label><input type="checkbox" name="interest" value="Home" id="c_home"> Home</label>
+          <label><input type="checkbox" name="interest" value="Auto" id="c_auto"> Auto</label>
+          <label><input type="checkbox" name="interest" value="Renters" id="c_renters"> Renters</label>
+          <label><input type="checkbox" name="interest" value="Life" id="c_life"> Life</label>
+          <label><input type="checkbox" name="interest" value="Business" id="c_biz"> Business</label>
+        </div>
+      </fieldset>
+      <p class="consent">By providing your phone number and checking a box below, you agree to receive SMS/text messages from
+        The Strauch Agency regarding insurance quotes, policy review reminders, renewal follow-ups, appointment reminders,
+        customer care, and marketing messages related to insurance products and services, including home and auto bundle
+        quote opportunities. You are opting into marketing texts if you select the marketing text message option.
+        Message frequency may vary. Standard message and data rates may apply. Reply <strong>STOP</strong> to opt out.
+        Reply <strong>HELP</strong> for help. <strong>We will not share or sell mobile information with third parties or
+        affiliates for promotional or marketing purposes.</strong> <strong>Consent is not a condition of purchase.</strong>
+        For more information, please review our <a href="privacy-policy/">Privacy Policy</a> and
+        <a href="terms/">Terms &amp; Conditions</a>.</p>
+      <label class="ck"><input type="checkbox" name="consentSmsMarketing" id="c_sms_mkt" value="Yes"> Yes, I would like to receive marketing text messages</label>
+      <label class="ck"><input type="checkbox" name="consentSmsNonMarketing" id="c_sms_svc" value="Yes"> Yes, I would like to receive non-marketing text messages (quotes, reminders, customer care)</label>
+      <button type="submit" class="btn btn-primary" id="c_send">Send</button>
+      <p class="cmsg" id="c_msg" role="status"></p>
+    </form>
+    <div class="cdone" id="c_done" hidden>
+      <h3>Got it &mdash; we'll call you.</h3>
+      <p>One of us reaches out the same business day. Anything urgent, call <a href="tel:+17196283948">(719) 628-3948</a>.</p>
     </div>
   </div>
 </section>
@@ -355,17 +394,6 @@
         </ul>
       </div>
     </div>
-    <div class="sms">
-      <h4 style="margin-bottom:10px">Text messaging &amp; consent</h4>
-      <p>By providing your phone number to The Strauch Agency, you agree to receive SMS/text messages from us
-      regarding insurance quotes, policy review reminders, renewal follow-ups, appointment reminders, customer
-      care, and marketing messages related to insurance products and services, including home and auto bundle
-      quote opportunities. <strong>Consent is not a condition of purchase.</strong> Message frequency may vary.
-      Standard message and data rates may apply. Reply <strong>STOP</strong> to opt out. Reply <strong>HELP</strong>
-      for help. <strong>We will not share or sell mobile information with third parties or affiliates for
-      marketing or promotional purposes.</strong> See our <a href="privacy-policy/">Privacy Policy</a> and
-      <a href="terms/">Terms &amp; Conditions</a>.</p>
-    </div>
     <p class="legal">
       The Strauch Agency is an authorized agency of Farmers Insurance Group. Colorado producer license #963971.
       Coverage and discounts are subject to underwriting review, policy terms and state availability; this page is
@@ -375,5 +403,25 @@
   </div>
 </footer>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "850ed6eb0221427bbe607fc3ad61f4a2"}'></script>
+<script>
+(function(){
+  const ENDPOINT="https://script.google.com/macros/s/AKfycbx24spWcNWtU1S7L9gKUogVw-0bRZclxMgohOy1euznLanIMAdXc3654YqVaz4TLzgXoQ/exec";
+  const f=document.getElementById("cform"), msg=document.getElementById("c_msg"), btn=document.getElementById("c_send");
+  f.addEventListener("submit", async ev=>{
+    ev.preventDefault(); msg.textContent="";
+    if(!f.checkValidity()){ f.querySelector(":invalid")?.focus(); msg.textContent="Please fill in your name, email and phone."; return; }
+    const data={source:"Website contact form",
+      interest:[...f.querySelectorAll("input[name=interest]:checked")].map(i=>i.value).join(", ")};
+    new FormData(f).forEach((v,k)=>{ if(k!=="interest") data[k]=v; });
+    btn.disabled=true; btn.textContent="Sending\u2026";
+    try{
+      const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({key:"strauch-quote-2026",type:"Personal",data})});
+      const out=await r.json(); if(!out.ok) throw new Error(out.error||"refused");
+      f.hidden=true; document.getElementById("c_done").hidden=false;
+    }catch(e){ btn.disabled=false; btn.textContent="Send"; msg.textContent="That didn't go through. Please call (719) 628-3948."; }
+  });
+})();
+</script>
 </body>
 </html>
