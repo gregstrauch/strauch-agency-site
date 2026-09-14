@@ -1,5 +1,5 @@
 :root{
-  --accent:#003087; --accent-dark:#00276E;
+  --accent:#003087;--cta:#D40163;--cta-dark:#B0004F; --accent-dark:#00276E;
   --blue:#003087; --blue-dark:#00276E; --blue-pale:#DAE7FF;
   --ink:#12172b; --body:#4a5168; --line:#e3e6ef;
   --bg:#ffffff; --bg-alt:#f7f8fc;
@@ -26,8 +26,8 @@ h2+.lede{margin-top:18px}
 /* buttons */
 .btn{display:inline-block;padding:16px 30px;border-radius:8px;font-weight:700;font-size:1.02rem;
   text-decoration:none;transition:.15s;border:2px solid transparent}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 20px -6px rgba(0,48,135,.55)}
-.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-primary{background:var(--cta);color:#fff;box-shadow:0 6px 20px -6px rgba(212,1,99,.5)}
+.btn-primary:hover{background:var(--cta-dark);transform:translateY(-1px)}
 .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
 .btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
