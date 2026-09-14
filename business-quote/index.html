@@ -491,10 +491,8 @@ async function submit(){
     const out=await res.json();
     if(!out.ok)throw new Error(out.error||"server refused");
     localStorage.removeItem(KEY);
-    form.style.display="none"; document.getElementById("nav").style.display="none";
-    document.getElementById("intro").style.display="none";
-    document.getElementById("done").classList.add("on");
-    window.scrollTo({top:0});
+    // real page view on /thanks/ = the quote conversion count
+    location.replace("thanks/");
   }catch(e){
     btn.disabled=false; btn.textContent="Try submitting again";
     const body=encodeURIComponent(Object.entries(values()).map(([k,v])=>k+": "+v).join("\n"));
