@@ -15,5 +15,5 @@ const iv = crypto.getRandomValues(new Uint8Array(12));
 const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, readFileSync(`${homedir()}/command-center/private-pages/${slug}.html`));
 mkdirSync(slug, { recursive: true });
 writeFileSync(`${slug}/page.enc.json`, JSON.stringify({ iv: b64u(iv), ct: b64u(ct) }));
-writeFileSync(`${slug}/index.html`, readFileSync('private-shim.html', 'utf8').replaceAll('{{TITLE}}', title));
+writeFileSync(`${slug}/index.html`, readFileSync('private-shim.html', 'utf8').replaceAll('{{TITLE}}', title).replace('{{V}}', Date.now()));
 console.log(`https://strauchagency.com/${slug}/#k=${b64u(keyBytes)}`);
