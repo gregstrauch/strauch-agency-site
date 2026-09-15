@@ -29,10 +29,11 @@ async function unlock(k) {
   const { iv, ct } = await (await fetch('page.enc.json')).json();
   const key = await crypto.subtle.importKey('raw', b64(k), 'AES-GCM', false, ['decrypt']);
   const html = new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(iv) }, key, b64(ct)));
-  try { localStorage.setItem('ss-key', k); } catch {}
+  try { localStorage.setItem(SK, k); } catch {}
   document.open(); document.write(html); document.close();
 }
-let stored = ''; try { stored = localStorage.getItem('ss-key') || ''; } catch {}
+const SK = 'ss-key:' + location.pathname;
+let stored = ''; try { stored = localStorage.getItem(SK) || localStorage.getItem('ss-key') || ''; } catch {}
 const k0 = extractKey(location.hash) || stored;
 f.onsubmit = async ev => { ev.preventDefault(); e.textContent = '';
   try { await unlock(extractKey(k.value)); } catch { e.textContent = 'That key did not work.'; } };
