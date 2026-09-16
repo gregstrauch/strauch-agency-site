@@ -92,6 +92,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
   font-weight:800;font-size:1.15rem;letter-spacing:.02em;color:#fff}
 .av-red{background:var(--accent)}
 img.av{object-fit:cover}
+.av-photo{width:96px;height:96px}
 .av-blue{background:var(--accent)}
 
 /* plan */
