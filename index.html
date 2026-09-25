@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Farmers Insurance Agent in Colorado Springs, CO | The Strauch Agency</title>
-<meta name="description" content="Local Farmers Insurance agent in Colorado Springs, CO. Auto, home, renters, life and business coverage explained in plain English. Se habla español. Free quote in about 10 minutes.">
-<meta property="og:title" content="The Strauch Agency — Farmers Insurance, Colorado Springs">
+<title>Farmers Insurance Agent in Colorado Springs | Strauch Agency</title>
+<meta name="description" content="Local Farmers Insurance agent in Colorado Springs serving all of Colorado. Auto, home, renters, life and business insurance explained plainly. Se habla español.">
+<meta property="og:title" content="Farmers Insurance Agent in Colorado Springs | Strauch Agency">
 <meta property="og:description" content="Most people don't find out what their policy actually covers until the worst day of their life. We fix that before it happens.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://strauchagency.com/">
@@ -29,31 +30,162 @@
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "InsuranceAgency",
-  "name": "The Strauch Agency",
-  "description": "Farmers Insurance agency in Colorado Springs offering auto, home, renters, life, umbrella and business insurance.",
-  "url": "https://strauchagency.com/",
-  "image": "https://strauchagency.com/og.png",
-  "telephone": "+1-719-628-3948",
-  "email": "gstrauch@farmersagent.com",
-  "address": {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://strauchagency.com/#website",
+   "url": "https://strauchagency.com/",
+   "name": "The Strauch Agency",
+   "inLanguage": [
+    "en",
+    "es"
+   ],
+   "publisher": {
+    "@id": "https://strauchagency.com/#agency"
+   }
+  },
+  {
+   "@type": "InsuranceAgency",
+   "@id": "https://strauchagency.com/#agency",
+   "name": "The Strauch Agency",
+   "alternateName": "Strauch Agency – Farmers Insurance",
+   "description": "Farmers Insurance agency based in Colorado Springs, serving households and businesses throughout Colorado with auto, home, renters, life, umbrella and business insurance.",
+   "url": "https://strauchagency.com/",
+   "logo": "https://strauchagency.com/apple-touch-icon.png",
+   "image": "https://strauchagency.com/og.png",
+   "telephone": "+1-719-628-3948",
+   "email": "gstrauch@farmersagent.com",
+   "address": {
     "@type": "PostalAddress",
     "streetAddress": "308 W Fillmore St, Ste 200",
     "addressLocality": "Colorado Springs",
     "addressRegion": "CO",
     "postalCode": "80907",
     "addressCountry": "US"
+   },
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+     ],
+     "opens": "08:30",
+     "closes": "17:30"
+    }
+   ],
+   "areaServed": [
+    {
+     "@type": "State",
+     "name": "Colorado"
+    },
+    {
+     "@type": "City",
+     "name": "Colorado Springs"
+    }
+   ],
+   "knowsLanguage": [
+    "en",
+    "es"
+   ],
+   "founder": {
+    "@id": "https://strauchagency.com/#greg"
+   },
+   "parentOrganization": {
+    "@type": "Organization",
+    "name": "Farmers Insurance",
+    "url": "https://www.farmers.com/"
+   },
+   "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Insurance",
+    "itemListElement": [
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Auto insurance",
+       "url": "https://strauchagency.com/auto-insurance-colorado-springs/"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Homeowners insurance",
+       "url": "https://strauchagency.com/home-insurance-colorado-springs/"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Renters insurance",
+       "url": "https://strauchagency.com/renters-insurance-colorado-springs/"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Life insurance",
+       "url": "https://strauchagency.com/life-insurance-colorado-springs/"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Business insurance",
+       "url": "https://strauchagency.com/business-insurance-colorado-springs/"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Insurance for military families",
+       "url": "https://strauchagency.com/military-insurance-colorado-springs/"
+      }
+     }
+    ]
+   }
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "08:30",
-    "closes": "17:30"
-  }],
-  "areaServed": { "@type": "City", "name": "Colorado Springs", "address": { "@type": "PostalAddress", "addressRegion": "CO", "addressCountry": "US" } },
-  "knowsLanguage": ["en","es"],
-  "parentOrganization": { "@type": "Organization", "name": "Farmers Insurance" }
+  {
+   "@type": "Person",
+   "@id": "https://strauchagency.com/#greg",
+   "name": "Greg Strauch",
+   "jobTitle": "Agency Owner, Licensed Insurance Agent",
+   "worksFor": {
+    "@id": "https://strauchagency.com/#agency"
+   },
+   "image": "https://strauchagency.com/greg.jpg",
+   "telephone": "+1-719-628-3948",
+   "email": "gstrauch@farmersagent.com",
+   "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Insurance producer license",
+    "name": "Colorado insurance producer license #963971",
+    "recognizedBy": {
+     "@type": "GovernmentOrganization",
+     "name": "Colorado Division of Insurance"
+    }
+   },
+   "knowsAbout": [
+    "Auto insurance",
+    "Homeowners insurance",
+    "Life insurance",
+    "Business insurance",
+    "Colorado insurance law",
+    "Military family insurance"
+   ],
+   "description": "Owner of The Strauch Agency, a Farmers Insurance agency in Colorado Springs. Serves in the U.S. Air Force Reserve (17+ years)."
+  }
+ ]
 }
 </script>
 <script type="application/ld+json">
@@ -270,7 +402,7 @@
       <a href="/home-insurance-colorado-springs/">Home<span>Homeowners &amp; condo</span></a>
       <a href="/renters-insurance-colorado-springs/">Renters<span>More coverage than you'd guess</span></a>
       <a href="/life-insurance-colorado-springs/">Life<span>Term, whole &amp; final expense</span></a>
-      <a href="/military-insurance-colorado-springs/">Military<span>PCS, deployment, SGLI &mdash; from a Reserve Chief</span></a>
+      <a href="/military-insurance-colorado-springs/">Military<span>PCS, deployment, SGLI &mdash; from a Reservist</span></a>
       <a href="/business-insurance-colorado-springs/">Business<span>Liability, property, commercial auto</span></a>
     </div>
   </div>
@@ -361,7 +493,7 @@
     <div class="fgrid">
       <div>
         <a class="logo" href="#top" style="margin-bottom:14px"><b style="color:#fff">The Strauch Agency</b><span>Farmers Insurance</span></a>
-        <p style="max-width:34ch">Auto, home, renters, life and business insurance for Colorado Springs households.</p>
+        <p style="max-width:34ch">Auto, home, renters, life and business insurance for households and businesses across Colorado, from our office in Colorado Springs.</p>
       </div>
       <div>
         <h4>Contact</h4>

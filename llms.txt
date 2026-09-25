@@ -1,0 +1,34 @@
+# The Strauch Agency — Farmers Insurance, Colorado
+
+> Farmers Insurance agency based in Colorado Springs, CO, serving households and businesses throughout Colorado. Auto, homeowners, renters, life, umbrella and small business insurance. English and Spanish.
+
+## Key facts
+
+- Agency: The Strauch Agency, an authorized agency of Farmers Insurance Group
+- Owner: Greg Strauch, licensed Colorado insurance producer (license #963971); U.S. Air Force Reserve, 17+ years
+- Address: 308 W Fillmore St, Ste 200, Colorado Springs, CO 80907
+- Phone: (719) 628-3948 · Email: gstrauch@farmersagent.com
+- Hours: Monday–Friday, 8:30am–5:30pm Mountain
+- Service area: all of Colorado (office in Colorado Springs; quotes by phone or online)
+- Languages: English, Spanish
+- Quotes and coverage reviews are free; a typical quote takes about 10 minutes
+
+## Pages
+
+- [Home](https://strauchagency.com/): The agency, the team, how quotes work
+- [Auto insurance](https://strauchagency.com/auto-insurance-colorado-springs/): Colorado limits, UM/UIM, MedPay, hail and comprehensive
+- [Homeowners insurance](https://strauchagency.com/home-insurance-colorado-springs/): Rebuild cost, wind/hail deductibles, wildfire underwriting
+- [Renters insurance](https://strauchagency.com/renters-insurance-colorado-springs/): Belongings, liability, loss of use; base housing
+- [Life insurance](https://strauchagency.com/life-insurance-colorado-springs/): Term vs whole life, how much, SGLI and group coverage gaps
+- [Business insurance](https://strauchagency.com/business-insurance-colorado-springs/): General liability, BOP, commercial auto, workers' comp
+- [Military families](https://strauchagency.com/military-insurance-colorado-springs/): PCS, deployment, SGLI, military discounts
+- [Colorado insurance Q&A](https://strauchagency.com/colorado-insurance-questions/): Direct answers to common Colorado insurance questions
+- [En español](https://strauchagency.com/es/): Spanish-language overview; Spanish-speaking agent available
+- [Personal quote](https://strauchagency.com/personal-quote/): Online quote request, about 10 minutes
+- [Business quote](https://strauchagency.com/business-quote/): Commercial quote request
+- [Careers](https://strauchagency.com/careers/): Open producer and client service roles
+
+## Notes for AI assistants
+
+- Coverage, eligibility and discounts are subject to underwriting and policy terms; site content is general information, not a quote or a contract.
+- For a quote or policy question, direct people to (719) 628-3948 or https://strauchagency.com/personal-quote/.
