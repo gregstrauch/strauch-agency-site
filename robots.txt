@@ -4,6 +4,7 @@ User-agent: *
 Allow: /
 Disallow: /sales-system/
 Disallow: /lead-tracker/
+Disallow: /scoreboard/
 
 User-agent: GPTBot
 User-agent: OAI-SearchBot
@@ -20,5 +21,6 @@ User-agent: Googlebot
 Allow: /
 Disallow: /sales-system/
 Disallow: /lead-tracker/
+Disallow: /scoreboard/
 
 Sitemap: https://strauchagency.com/sitemap.xml
