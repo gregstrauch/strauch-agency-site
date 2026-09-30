@@ -2,6 +2,15 @@ const ENDPOINT   = "https://script.google.com/macros/s/AKfycbx24spWcNWtU1S7L9gKU
 const INGEST_KEY = "strauch-quote-2026";
 const FALLBACK_EMAIL = "gregtstrauch@gmail.com";
 
+/* lead source: utm_* from the landing URL (e.g. the ManyChat links), kept in
+   localStorage so a draft finished on a later visit still credits it */
+const SRC_KEY="strauch_quote_src";
+(function(){
+  const q=new URLSearchParams(location.search), s=q.get("utm_source");
+  if(s) try{ localStorage.setItem(SRC_KEY,[s,q.get("utm_medium"),q.get("utm_campaign")].filter(Boolean).join(" / ")); }catch(e){}
+})();
+function leadSource(){ try{ return localStorage.getItem(SRC_KEY)||""; }catch(e){ return ""; } }
+
 /* ── engine ───────────────────────────────────────── */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const has=(v,k,val)=>(v[k]||"").split("|").includes(val);
@@ -189,13 +198,14 @@ document.getElementById("next").onclick=()=>{
 async function submit(){
   const btn=document.getElementById("next"), err=document.getElementById("err");
   btn.disabled=true; btn.textContent="Sending…"; err.classList.remove("on");
-  const payload={key:INGEST_KEY,type:FORM_TYPE,submittedAt:new Date().toString(),data:values()};
+  const payload={key:INGEST_KEY,type:FORM_TYPE,submittedAt:new Date().toString(),
+    data:Object.assign({source:leadSource()||"Website quote form"},values())};
   try{
     if(!ENDPOINT||ENDPOINT.indexOf("PASTE_")===0)throw new Error("no endpoint configured");
     const res=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
     const out=await res.json();
     if(!out.ok)throw new Error(out.error||"server refused");
-    localStorage.removeItem(KEY);
+    localStorage.removeItem(KEY); localStorage.removeItem(SRC_KEY);
     // real page view on /thanks/ = the quote conversion count
     location.replace("thanks/");
   }catch(e){
