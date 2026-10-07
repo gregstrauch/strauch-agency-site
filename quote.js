@@ -1,4 +1,4 @@
-const ENDPOINT   = "https://script.google.com/macros/s/AKfycbx24spWcNWtU1S7L9gKUogVw-0bRZclxMgohOy1euznLanIMAdXc3654YqVaz4TLzgXoQ/exec";
+const ENDPOINT   = "https://script.google.com/macros/s/AKfycbzO3yMibCF9xlfiPxnKOda20gBgBACXFh4DZVkV_-GhZNCuZjhpdawDpzfIpGW5U3WP3w/exec";
 const INGEST_KEY = "strauch-quote-2026";
 const FALLBACK_EMAIL = "gregtstrauch@gmail.com";
 
