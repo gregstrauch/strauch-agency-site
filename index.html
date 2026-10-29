@@ -485,6 +485,7 @@
         <a href="terms/">Terms &amp; Conditions</a>.</p>
       <label class="ck"><input type="checkbox" name="consentSmsMarketing" id="c_sms_mkt" value="Yes"> Yes, I would like to receive marketing text messages</label>
       <label class="ck"><input type="checkbox" name="consentSmsNonMarketing" id="c_sms_svc" value="Yes"> Yes, I would like to receive non-marketing text messages (quotes, reminders, customer care)</label>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <button type="submit" class="btn btn-primary" id="c_send">Send</button>
       <p class="cmsg" id="c_msg" role="status"></p>
     </form>
@@ -547,20 +548,42 @@
 <script>
 (function(){
   const ENDPOINT="https://script.google.com/macros/s/AKfycbzO3yMibCF9xlfiPxnKOda20gBgBACXFh4DZVkV_-GhZNCuZjhpdawDpzfIpGW5U3WP3w/exec";
+  const SRC_KEY="strauch_quote_src", startedAt=Date.now();
+  /* same lead-source capture as quote.js, so homepage leads keep their utm credit */
+  const q=new URLSearchParams(location.search), s=q.get("utm_source");
+  if(s) try{ localStorage.setItem(SRC_KEY,[s,q.get("utm_medium"),q.get("utm_campaign")].filter(Boolean).join(" / ")); }catch(e){}
+  const leadSource=()=>{ try{ return localStorage.getItem(SRC_KEY)||""; }catch(e){ return ""; } };
   const f=document.getElementById("cform"), msg=document.getElementById("c_msg"), btn=document.getElementById("c_send");
+  const phone=document.getElementById("c_phone"), email=document.getElementById("c_email");
+  phone.addEventListener("input",()=>phone.setCustomValidity(""));
+  email.addEventListener("input",()=>email.setCustomValidity(""));
   f.addEventListener("submit", async ev=>{
     ev.preventDefault(); msg.textContent="";
-    if(!f.checkValidity()){ f.querySelector(":invalid")?.focus(); msg.textContent="Please fill in your name, email and phone."; return; }
-    const data={source:"Website contact form",
-      interest:[...f.querySelectorAll("input[name=interest]:checked")].map(i=>i.value).join(", ")};
-    new FormData(f).forEach((v,k)=>{ if(k!=="interest") data[k]=v; });
+    const digits=phone.value.replace(/\D/g,"").replace(/^1(?=\d{10}$)/,"");
+    phone.setCustomValidity(phone.value.trim()&&digits.length!==10?"Please enter a 10-digit phone number.":"");
+    email.setCustomValidity(email.value.trim()&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())?"Please check your email address.":"");
+    const bad=f.querySelector(":invalid");
+    if(bad){
+      bad.focus();
+      msg.textContent=bad===phone&&phone.value.trim()?"Please enter a 10-digit phone number."
+        :bad.type==="email"&&bad.value.trim()?"Please check your email address."
+        :"Please fill in your name, email and phone.";
+      return;
+    }
+    const interest=[...f.querySelectorAll("input[name=interest]:checked")].map(i=>i.value);
+    const type=interest.length&&interest.every(v=>v==="Business")?"Commercial":"Personal";
+    const data={source:leadSource()||"Website contact form",interest:interest.join(", ")};
+    new FormData(f).forEach((v,k)=>{ if(k!=="interest"&&k!=="website") data[k]=v; });
     btn.disabled=true; btn.textContent="Sending\u2026";
     try{
       const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
-        body:JSON.stringify({key:"strauch-quote-2026",type:"Personal",data})});
+        body:JSON.stringify({key:"strauch-quote-2026",type,data,
+          hp:f.elements.website.value,elapsedMs:Date.now()-startedAt})});
       const out=await r.json(); if(!out.ok) throw new Error(out.error||"refused");
-      f.hidden=true; document.getElementById("c_done").hidden=false;
-    }catch(e){ btn.disabled=false; btn.textContent="Send"; msg.textContent="That didn't go through. Please call (719) 628-3948."; }
+      try{ localStorage.removeItem(SRC_KEY); }catch(e){}
+      // real page view on /thanks/ = the conversion count, same as the quote forms
+      location.replace(type==="Commercial"?"/business-quote/thanks/":"/personal-quote/thanks/");
+    }catch(e){ btn.disabled=false; btn.textContent="Send"; msg.textContent="That didn't go through. Please try again, or call (719) 628-3948."; }
   });
 })();
 </script>

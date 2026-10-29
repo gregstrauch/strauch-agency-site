@@ -11,6 +11,13 @@ const SRC_KEY="strauch_quote_src";
 })();
 function leadSource(){ try{ return localStorage.getItem(SRC_KEY)||""; }catch(e){ return ""; } }
 
+/* sensitive fields (DOB, license, tax ID) are never written to the device or
+   put in the email fallback: they live only in the open page */
+const SENSITIVE=/(^|_)(dob|licenseNumber|fein)$/;
+const notSensitive=v=>Object.fromEntries(Object.entries(v).filter(([k])=>!SENSITIVE.test(k)));
+const DRAFT_MAX_AGE=14*864e5;
+const startedAt=Date.now();
+
 /* ── engine ───────────────────────────────────────── */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const has=(v,k,val)=>(v[k]||"").split("|").includes(val);
@@ -133,7 +140,7 @@ function flash(el){
 /* draft autosave */
 const KEY="strauch_quote_"+FORM_TYPE.toLowerCase();
 function save(){
-  try{ localStorage.setItem(KEY,JSON.stringify({v:values(),r:repCount,s:step}));
+  try{ localStorage.setItem(KEY,JSON.stringify({v:notSensitive(values()),r:repCount,s:step,t:Date.now()}));
     const el=document.getElementById("saved"); el.textContent="Saved";
     clearTimeout(save.t); save.t=setTimeout(()=>el.textContent="",1800);
   }catch(e){}
@@ -141,6 +148,7 @@ function save(){
 function restore(){
   let d; try{ d=JSON.parse(localStorage.getItem(KEY)||"null"); }catch(e){}
   if(!d)return;
+  if(!d.t||Date.now()-d.t>DRAFT_MAX_AGE){ try{ localStorage.removeItem(KEY); }catch(e){} return; }
   repCount=d.r||repCount; render();
   Object.entries(d.v||{}).forEach(([n,val])=>{
     const els=form.querySelectorAll(`[name="${CSS.escape(n)}"]`);
@@ -199,7 +207,8 @@ async function submit(){
   const btn=document.getElementById("next"), err=document.getElementById("err");
   btn.disabled=true; btn.textContent="Sending…"; err.classList.remove("on");
   const payload={key:INGEST_KEY,type:FORM_TYPE,submittedAt:new Date().toString(),
-    data:Object.assign({source:leadSource()||"Website quote form"},values())};
+    data:Object.assign({source:leadSource()||"Website quote form"},values()),
+    hp:(document.getElementById("hp_website")||{}).value||"",elapsedMs:Date.now()-startedAt};
   try{
     if(!ENDPOINT||ENDPOINT.indexOf("PASTE_")===0)throw new Error("no endpoint configured");
     const res=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
@@ -210,13 +219,15 @@ async function submit(){
     location.replace("thanks/");
   }catch(e){
     btn.disabled=false; btn.textContent="Try submitting again";
-    const body=encodeURIComponent(Object.entries(values()).map(([k,v])=>k+": "+v).join("\n"));
-    err.innerHTML=`We couldn't submit that automatically. Nothing you typed is lost — it's still saved on this device.<br><br>
+    const body=encodeURIComponent(Object.entries(notSensitive(values())).map(([k,v])=>k+": "+v).join("\n")+
+      "\n\n(Date of birth, license and tax ID numbers left out for your security. We'll get those by phone.)");
+    err.innerHTML=`We couldn't submit that automatically. Keep this page open and nothing you typed is lost.<br><br>
       Please try once more, or <a href="mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(FORM_TYPE+" quote application")}&body=${body}">send it to us by email instead</a>.`;
     err.classList.add("on"); err.scrollIntoView({block:"center",behavior:"smooth"});
   }
 }
 
+document.body.insertAdjacentHTML("beforeend",'<div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden"><label>Website<input id="hp_website" name="website" type="text" tabindex="-1" autocomplete="off"></label></div>');
 render(); restore();
 form.querySelectorAll("input:checked").forEach(syncOpt);
 const sd=form.querySelector('[name="signatureDate"]');
